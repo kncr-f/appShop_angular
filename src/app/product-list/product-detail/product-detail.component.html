@@ -1,0 +1,23 @@
+<div class="card mb-3 p-1 border border-warning">
+  <div class="row">
+    <div class="col-3">
+      <img
+        src="/assets/images/{{ product.imageUrl }}"
+        alt=""
+        class="img-fluid rounded-start"
+      />
+    </div>
+    <div class="col-9">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">
+          {{ product.description }}
+        </p>
+        <button (click)="unselectProduct()" class="btn btn-primary">
+          Unselect
+        </button>
+        <!-- <button class="btn btn-primary">Unselect</button> -->
+      </div>
+    </div>
+  </div>
+</div>

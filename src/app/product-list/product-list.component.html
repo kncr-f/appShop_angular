@@ -1,0 +1,44 @@
+<product-detail
+  [product]="selectedProduct"
+  *ngIf="selectedProduct"
+  (unSelectEvent)="unselectProduct()"
+></product-detail>
+<div *ngIf="products.length > 0; else noProducts">
+  <ng-template
+    [ngTemplateOutlet]="productList"
+    [ngTemplateOutletContext]="{ products: products }"
+  ></ng-template>
+</div>
+<ng-template #productList let-products="products">
+  <div *ngFor="let selectedProduct of products">
+    <div *ngIf="selectedProduct.isActive" class="card mb-3 p-1">
+      <div class="row">
+        <div class="col-3">
+          <img
+            src="/assets/images/{{ selectedProduct.imageUrl }}"
+            alt=""
+            class="img-fluid rounded-start"
+          />
+        </div>
+        <div class="col-9">
+          <div class="card-body">
+            <h5 class="card-title">{{ selectedProduct.name }}</h5>
+            <p class="card-text">
+              {{ selectedProduct.description }}
+            </p>
+            <button
+              (click)="selectProduct(selectedProduct)"
+              class="btn btn-primary"
+            >
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noProducts>
+  <div class="alert alert-warning">no products</div>
+</ng-template>
