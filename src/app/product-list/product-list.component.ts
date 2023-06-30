@@ -32,16 +32,12 @@ export class ProductListComponent implements OnInit {
             'https://ng-shopapp-47866-default-rtdb.firebaseio.com/products.json'
           )
           .subscribe((data) => {
-            console.log(data);
-            const result: Product[] = [];
             for (const key in data) {
               // console.log(key);
               // console.log(data[key]);
               // console.log({ ...data[key], id: key });
-              result.push({ ...data[key], id: key });
+              this.products.push({ ...data[key], id: key });
             }
-            // console.log(this.products);
-            this.products = result;
           });
       }
     });
