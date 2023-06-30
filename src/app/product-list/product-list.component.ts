@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductRepository } from '../models/product.repository';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'product-list',
@@ -10,19 +11,28 @@ import { ProductRepository } from '../models/product.repository';
 export class ProductListComponent implements OnInit {
   products: Product[];
 
-  selectedProduct: Product | null;
   productRepository: ProductRepository;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.productRepository = new ProductRepository();
     this.products = this.productRepository.getProducts();
   }
 
-  ngOnInit(): void {}
-  selectProduct(product: Product) {
-    this.selectedProduct = product;
+  ngOnInit(): void {
+    this.route.params.subscribe((data) => {
+      const categoryId = data['categoryId'];
+      if (categoryId) {
+        this.products =
+          this.productRepository.getProductByCategoryId(categoryId);
+      } else {
+        this.products = this.productRepository.getProducts();
+      }
+    });
   }
-  unselectProduct() {
-    this.selectedProduct = null;
-  }
+  // selectProduct(product: Product) {
+  //   this.selectedProduct = product;
+  // }
+  // unselectProduct() {
+  //   this.selectedProduct = null;
+  // }
 }

@@ -11,6 +11,7 @@ export class CategotyListComponent implements OnInit {
   categories: Category[];
   selectedCategory: Category | null;
   categoryRepository: CategoryRepository;
+  displayAll: boolean = true;
 
   constructor() {
     this.categoryRepository = new CategoryRepository();
@@ -19,11 +20,13 @@ export class CategotyListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectCategory(category: Category) {
-    if (this.selectedCategory) {
-      this.selectedCategory = null;
-    } else {
+  selectCategory(category?: Category) {
+    if (category) {
       this.selectedCategory = category;
+      this.displayAll = false;
+    } else {
+      this.selectedCategory = null;
+      this.displayAll = true;
     }
   }
 }

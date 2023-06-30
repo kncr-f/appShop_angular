@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { ProductRepository } from 'src/app/models/product.repository';
 
 @Component({
   selector: 'product-detail',
@@ -7,14 +9,17 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product: Product;
-  @Output() unSelectEvent = new EventEmitter<void>();
+  product: Product | undefined;
+  productRepository: ProductRepository;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {
+    this.productRepository = new ProductRepository();
+  }
 
-  ngOnInit(): void {}
-
-  unselectProduct() {
-    this.unSelectEvent.emit();
+  ngOnInit(): void {
+    this.route.params.subscribe((data) => {
+      const id = data['productId'];
+      this.product = this.productRepository.getProductById(id);
+    });
   }
 }

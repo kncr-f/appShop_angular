@@ -1,8 +1,8 @@
-<product-detail
+<!-- <product-detail
   [product]="selectedProduct"
   *ngIf="selectedProduct"
   (unSelectEvent)="unselectProduct()"
-></product-detail>
+></product-detail> -->
 <div *ngIf="products.length > 0; else noProducts">
   <ng-template
     [ngTemplateOutlet]="productList"
@@ -10,28 +10,25 @@
   ></ng-template>
 </div>
 <ng-template #productList let-products="products">
-  <div *ngFor="let selectedProduct of products">
-    <div *ngIf="selectedProduct.isActive" class="card mb-3 p-1">
+  <div *ngFor="let product of products">
+    <div *ngIf="product.isActive" class="card mb-3 p-1">
       <div class="row">
         <div class="col-3">
           <img
-            src="/assets/images/{{ selectedProduct.imageUrl }}"
+            src="/assets/images/{{ product.imageUrl }}"
             alt=""
             class="img-fluid rounded-start"
           />
         </div>
         <div class="col-9">
           <div class="card-body">
-            <h5 class="card-title">{{ selectedProduct.name }}</h5>
+            <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">
-              {{ selectedProduct.description }}
+              {{ product.description }}
             </p>
-            <button
-              (click)="selectProduct(selectedProduct)"
-              class="btn btn-primary"
-            >
-              Select
-            </button>
+            <a routerLink="/products/{{ product.id }}" class="btn btn-primary">
+              Product Detail
+            </a>
           </div>
         </div>
       </div>

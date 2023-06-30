@@ -1,4 +1,4 @@
-<div class="card mb-3 p-1 border border-warning">
+<div class="card mb-3" *ngIf="product; else noProduct">
   <div class="row">
     <div class="col-3">
       <img
@@ -13,11 +13,13 @@
         <p class="card-text">
           {{ product.description }}
         </p>
-        <button (click)="unselectProduct()" class="btn btn-primary">
-          Unselect
-        </button>
+
         <!-- <button class="btn btn-primary">Unselect</button> -->
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #noProduct>
+  <div class="alert alert-warning">no products</div>
+</ng-template>

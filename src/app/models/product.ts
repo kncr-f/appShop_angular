@@ -5,4 +5,5 @@ export interface Product {
   description: string;
   imageUrl: string;
   isActive: boolean;
+  categoryId?: number;
 }
