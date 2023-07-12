@@ -1,21 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [ProductService],
 })
 export class AppComponent {
   private title = 'Home Page';
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private productService: ProductService
+  ) {}
   getTitle() {
     return this.title;
   }
   createProduct() {
     const p = {
       id: 3,
-      name: 'iphone §',
+      name: 'iphone Super bla bla',
       price: 3800,
       imageUrl: '2.jpeg',
       description: 'puffff....',
@@ -23,13 +28,8 @@ export class AppComponent {
       categoryId: 2,
     };
 
-    this.http
-      .post(
-        'https://ng-shopapp-47866-default-rtdb.firebaseio.com/products.json',
-        p
-      )
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.productService.createProduct(p).subscribe((data) => {
+      console.log(data);
+    });
   }
 }
