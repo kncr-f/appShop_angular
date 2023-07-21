@@ -25,17 +25,9 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
       const categoryId = data['categoryId'];
-      if (categoryId) {
-        this.products =
-          this.productRepository.getProductByCategoryId(categoryId);
-      } else {
-        //Firebase Connection
-        this.productService.getProducts().subscribe((data) => {
-          for (const key in data) {
-            this.products.push({ ...data[key], id: key });
-          }
-        });
-      }
+      this.productService.getProducts(categoryId).subscribe((data) => {
+        this.products = data;
+      });
     });
   }
 }
