@@ -20,12 +20,12 @@ export class AppComponent {
   createProduct() {
     const p = {
       id: 3,
-      name: 'iphone Super bla bla',
+      name: 'android tv',
       price: 3800,
       imageUrl: '2.jpeg',
       description: 'puffff....',
       isActive: true,
-      categoryId: 2,
+      categoryId: 3,
     };
 
     this.productService.createProduct(p).subscribe((data) => {
