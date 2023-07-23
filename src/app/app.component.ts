@@ -20,7 +20,7 @@ export class AppComponent {
   createProduct() {
     const p = {
       id: 3,
-      name: 'android tv',
+      name: 'android2 tv',
       price: 3800,
       imageUrl: '2.jpeg',
       description: 'puffff....',
