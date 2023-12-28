@@ -1,0 +1,61 @@
+<h3>Product Create</h3>
+<form action="">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input #name type="text" name="name" id="name" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input #price type="text" name="price" id="price" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">ImageUrl</label>
+    <input
+      #imageUrl
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      class="form-control"
+      #description
+    ></textarea>
+  </div>
+  <div class="form-check mb-3">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      name="isActive"
+      id="isActive"
+      #isActive
+    />
+    <label class="form-check-label" for="flexCheckDefault">isActive</label>
+  </div>
+  <div class="mb-3">
+    <label for="categoryId" class="form-label">Category</label>
+    <select #categoryId name="categoryId" id="categoryId" class="form-select">
+      <option value="0">Category</option>
+      <option value="1">Phones</option>
+      <option value="2">Watch</option>
+      <option value="3">TV</option>
+    </select>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary m-2"
+    (click)="
+      saveProduct(name, price, imageUrl, description, isActive, categoryId)
+    "
+  >
+    Save Product
+  </button>
+</form>
