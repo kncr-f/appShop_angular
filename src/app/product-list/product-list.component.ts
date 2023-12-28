@@ -29,13 +29,10 @@ export class ProductListComponent implements OnInit {
         // this.products = this.productRepository.getProducts();
         this.http
           .get<Product[]>(
-            'https://ng-shopapp-47866-default-rtdb.firebaseio.com/products.json'
+            'https://myshopapp-c720b-default-rtdb.firebaseio.com/products.json'
           )
           .subscribe((data) => {
             for (const key in data) {
-              // console.log(key);
-              // console.log(data[key]);
-              // console.log({ ...data[key], id: key });
               this.products.push({ ...data[key], id: key });
             }
           });
