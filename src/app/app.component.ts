@@ -15,9 +15,9 @@ export class AppComponent {
   createProduct() {
     const p = {
       id: 3,
-      name: 'iphone §',
-      price: 3800,
-      imageUrl: '2.jpeg',
+      name: 'iphone 17',
+      price: 44800,
+      imageUrl: '3.jpeg',
       description: 'puffff....',
       isActive: true,
       categoryId: 2,
@@ -25,7 +25,7 @@ export class AppComponent {
 
     this.http
       .post(
-        'https://ng-shopapp-47866-default-rtdb.firebaseio.com/products.json',
+        'https://myshopapp-c720b-default-rtdb.firebaseio.com/products.json',
         p
       )
       .subscribe((data) => {
