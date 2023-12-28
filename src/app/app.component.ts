@@ -26,9 +26,10 @@ export class AppComponent {
       imageUrl: '1.jpeg',
       description: 'new product....',
       isActive: true,
-      categoryId: 2,
+      categoryId: 3,
     };
 
     this.productService.createProduct(p).subscribe((data) => console.log(data));
+
   }
 }

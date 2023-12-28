@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
+
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -19,5 +20,6 @@ export class ProductService {
 
   createProduct(p: Product): Observable<Product> {
     return this.http.post<Product>(this.url + 'products.json', p);
+
   }
 }

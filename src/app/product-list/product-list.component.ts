@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductRepository } from '../models/product.repository';
 import { ActivatedRoute } from '@angular/router';
+
+import { HttpClient } from '@angular/common/http';
+
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -12,11 +15,11 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-
   productRepository: ProductRepository;
 
   constructor(
     private route: ActivatedRoute,
+
 
     private productService: ProductService
   ) {
@@ -24,9 +27,11 @@ export class ProductListComponent implements OnInit {
     // this.products = this.productRepository.getProducts();
   }
 
+
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
       const categoryId = data['categoryId'];
+
       if (categoryId) {
         this.products =
           this.productRepository.getProductByCategoryId(categoryId);
@@ -39,6 +44,7 @@ export class ProductListComponent implements OnInit {
           }
         });
       }
+
     });
   }
 }

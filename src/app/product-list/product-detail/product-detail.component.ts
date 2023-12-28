@@ -8,10 +8,10 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
+  providers: [ProductService],
 })
 export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
-  productRepository: ProductRepository;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
       const id = data['productId'];
-      //this.product = this.productRepository.getProductById(id);
+
       this.productService.getProductById(id).subscribe((data) => {
         this.product = { ...data, id: id };
       });
