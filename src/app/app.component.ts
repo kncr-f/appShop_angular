@@ -18,6 +18,21 @@ export class AppComponent {
     return this.title;
   }
 
+  // createProduct() {
+  //   const p = {
+  //     id: 3,
+  //     name: 'iphone 23',
+  //     price: 44800,
+  //     imageUrl: '1.jpeg',
+  //     description: 'new product....',
+  //     isActive: true,
+  //     categoryId: 3,
+  //   };
+
+  //   // this.productService.createProduct(p).subscribe((data) => console.log(data));
+
+  // }
+
   createProduct() {
     const p = {
       id: 3,
@@ -28,8 +43,8 @@ export class AppComponent {
       isActive: true,
       categoryId: 3,
     };
-
-    this.productService.createProduct(p).subscribe((data) => console.log(data));
-
+    this.productService.createProduct(p).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

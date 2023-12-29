@@ -17,7 +17,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
     AppComponent,
     NavbarComponent,
     ProductListComponent,
-
+    CreateProductComponent,
     CategotyListComponent,
     ProductDetailComponent,
     HomeComponent,

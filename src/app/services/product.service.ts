@@ -4,7 +4,6 @@ import { Product } from '../models/product';
 
 import { Observable, map } from 'rxjs';
 
-
 @Injectable()
 export class ProductService {
   private url = 'https://myshopapp-c720b-default-rtdb.firebaseio.com/';
@@ -35,6 +34,10 @@ export class ProductService {
 
   createProduct(p: Product): Observable<Product> {
     return this.http.post<Product>(this.url + 'products.json', p);
-
   }
+
+  // createProduct(p: Product): Observable<Product> {
+  //   return this.http.post<Product>(this.url + 'products.json', p);
+
+  // }
 }

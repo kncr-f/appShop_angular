@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-product.component.css'],
 })
 export class CreateProductComponent implements OnInit {
-  constructor(private productService: ProductService, private route: Router) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {}
-
   saveProduct(
     name: any,
     price: any,
@@ -20,17 +19,17 @@ export class CreateProductComponent implements OnInit {
     isActive: any,
     categoryId: any
   ) {
-    const newProduct = {
+    const p = {
       id: 1,
       name: name.value,
       price: price.value,
       imageUrl: imageUrl.value,
       description: description.value,
-      isActive: isActive.checked,
+      isActive: isActive.value,
       categoryId: categoryId.value,
     };
-    this.productService.createProduct(newProduct).subscribe((data) => {
-      this.route.navigate(['/products']);
+    this.productService.createProduct(p).subscribe((data) => {
+      this.router.navigate(['products']);
     });
   }
 }
