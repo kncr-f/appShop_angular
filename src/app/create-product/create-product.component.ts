@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
+import { CategoryService } from '../services/category.service';
+import { Category } from '../models/category';
 
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css'],
+  providers: [CategoryService, ProductService],
 })
 export class CreateProductComponent implements OnInit {
-  constructor(private productService: ProductService, private router: Router) {}
+  categories: Category[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private categoryService: CategoryService
+  ) {}
+
+  ngOnInit(): void {
+    this.categoryService
+      .getCategories()
+      .subscribe((data) => (this.categories = data));
+  }
   saveProduct(
     name: any,
     price: any,

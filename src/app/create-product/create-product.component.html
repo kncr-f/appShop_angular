@@ -42,8 +42,9 @@
     <label for="categoryId" class="form-label">Category</label>
     <select #categoryId name="categoryId" id="categoryId" class="form-select">
       <option value="0">Category</option>
-      <option value="0">Phone</option>
-      <option value="0">Computer</option>
+      <option *ngFor="let category of categories" value="{{ category.id }}">
+        {{ category.name }}
+      </option>
     </select>
   </div>
   <button
