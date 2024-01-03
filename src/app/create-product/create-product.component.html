@@ -1,6 +1,6 @@
 <h3>Product Create</h3>
-{{ model | json }}
-<form (ngSubmit)="saveProduct()" action="">
+
+<form #form="ngForm" (ngSubmit)="saveProduct(form)" action="">
   <div class="alert alert-danger" *ngIf="error">
     {{ error }}
   </div>
@@ -8,21 +8,34 @@
     <label for="name" class="form-label">Name</label>
     <input
       [(ngModel)]="model.name"
+      #name="ngModel"
+      required
+      minlength="5"
       type="text"
       name="name"
       class="form-control"
       id="name"
     />
+    <div class="text-danger mt1" *ngIf="name.invalid && name.touched">
+      Please enter a valid name
+    </div>
   </div>
   <div class="mb-3">
     <label for="price" class="form-label">Price</label>
     <input
       [(ngModel)]="model.price"
-      type="text"
+      #price="ngModel"
+      required
+      type="number"
+      max="10000000"
+      min="1"
       name="price"
       class="form-control"
       id="price"
     />
+    <div class="text-danger mt1" *ngIf="price.invalid && price.touched">
+      Please enter a valid Price
+    </div>
   </div>
   <div class="mb-3">
     <label for="imageUrl" class="form-label">imageUrl</label>
@@ -36,13 +49,12 @@
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
-    <input
-      type="text"
+    <textarea
+      [(ngModel)]="model.description"
       name="description"
       class="form-control"
       id="description"
-      [(ngModel)]="model.description"
-    />
+    ></textarea>
   </div>
   <div class="form-check mb-3">
     <input
@@ -50,7 +62,7 @@
       name="isActive"
       id="isActive"
       class="form-check-input"
-      [(ngModel)]="model.isActiv"
+      [(ngModel)]="model.isActive"
     />
     <label for="flexCheckDefault" class="form-check-label"> isActive </label>
   </div>
@@ -68,5 +80,7 @@
       </option>
     </select>
   </div>
-  <button class="btn btn-success" type="submit">Save Product</button>
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+    Save Product
+  </button>
 </form>
