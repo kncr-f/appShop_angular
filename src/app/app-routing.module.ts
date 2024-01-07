@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: 'products/createProduct', component: CreateProductComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'products/:productId', component: ProductDetailComponent },
   { path: 'products/category/:categoryId', component: ProductListComponent },
   { path: 'categories/createCategory', component: CreateCategoryComponent },
+  { path: 'authenticate', component: AuthComponent },
 ];
 
 @NgModule({

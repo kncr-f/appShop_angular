@@ -1,0 +1,39 @@
+<h3>{{ isLogin ? "Log In" : "Create a new Account" }}</h3>
+<form #form="ngForm" (ngSubmit)="handleSubmit(form)">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      required
+      email
+      type="email"
+      name="email"
+      id="email"
+      class="form-control"
+      ngModel
+    />
+  </div>
+  <div class="mb-3" class="form-label">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="form-control"
+      ngModel
+      required
+      minlength="6"
+    />
+  </div>
+  <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      {{ isLogin ? "Log In" : "Sign Up" }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="switchAccount(form)"
+    >
+      {{ isLogin ? "No Account, Create new" : "have an Account, Log In" }}
+    </button>
+  </div>
+</form>
